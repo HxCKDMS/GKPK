@@ -1,7 +1,7 @@
 package HxCKDMS.gkpk.block;
 import HxCKDMS.gkpk.GKPK;
 import HxCKDMS.gkpk.GordianCreativeTab;
-import HxCKDMS.gkpk.tile.TileEntityFermenter;
+import HxCKDMS.gkpk.tile.TileEntityExtractor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
@@ -30,7 +30,7 @@ public class BlockExtractor extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World world, int thing) {
-        return new TileEntityFermenter();
+        return new TileEntityExtractor();
     }
 
     @Override
