@@ -23,13 +23,14 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
         else if (GKPK.recipes.getExtractingResult(slots[1]) != null) {
             if (processing > 0)
                 processing--;
-             else if ((slots[2] == null || slots[2].stackSize < GKPK.recipes.getExtractingResult(slots[1]).getItem().getItemStackLimit()) && processing < 1) {
+             else if ((slots[2] == null || slots[2].stackSize < GKPK.itemExtract.getItemStackLimit()) && processing < 1) {
                 if (processing == -1)
                     processing = EXTRACTOR_TIME;
                 else {
                     ItemStack stack = GKPK.recipes.getExtractingResult(slots[1]);
                     if (slots[2] == null) {
                         slots[2] = stack;
+                        processing = -1;
                     } else if (stack.getItem() == slots[2].getItem()) {
                         slots[2].stackSize += 1;
 

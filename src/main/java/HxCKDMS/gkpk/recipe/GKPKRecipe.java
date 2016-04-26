@@ -1,6 +1,9 @@
 package HxCKDMS.gkpk.recipe;
+
 import HxCKDMS.gkpk.GKPK;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -9,10 +12,11 @@ import java.util.Map;
 
 public class GKPKRecipe {
     private static final GKPKRecipe ExtracterBase = new GKPKRecipe();
-    private HashMap<ItemStack, String> ExtractList = new HashMap<>();
+    private HashMap<Item, String> ExtractList = new HashMap<>();
 
     {
-        ExtractList.put(new ItemStack(Blocks.tallgrass, 1, 2), "weed");
+        ExtractList.put(new ItemStack(Blocks.brown_mushroom).getItem(), "weed");
+        ExtractList.put(new ItemStack(Items.baked_potato).getItem(), "weed");//lel baked
     }
 
     public static GKPKRecipe Extracting(){
@@ -23,16 +27,19 @@ public class GKPKRecipe {
         return ExtractList;
     }
 
-    public void registerExtractRecipe(ItemStack input, String drug) {
+    public void registerExtractRecipe(Item input, String drug) {
         ExtractList.put(input, drug);
     }
 
     public ItemStack getExtractingResult(ItemStack input) {
-        ItemStack stack = new ItemStack(GKPK.itemExtract);
-        stack.setTagCompound(new NBTTagCompound());
-        NBTTagCompound tag = stack.getTagCompound();
-        tag.setString("drugEffect", ExtractList.get(input));
-        stack.setTagCompound(tag);
-        return stack;
+        if (ExtractList.keySet().contains(input.getItem())) {
+            ItemStack stack = new ItemStack(GKPK.itemExtract);
+            stack.setTagCompound(new NBTTagCompound());
+            NBTTagCompound tag = stack.getTagCompound();
+            tag.setString("drugEffect", ExtractList.get(input));
+            stack.setTagCompound(tag);
+            return stack;
+        }
+        return null;
     }
 }

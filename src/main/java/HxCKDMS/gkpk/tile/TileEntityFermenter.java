@@ -39,9 +39,10 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
                 if (processing == -1)
                     processing = FERMENTER_TIME;
                 else {
-                    ItemStack stack = new ItemStack(GKPK.itemEthanol, 1);
+                    ItemStack stack = new ItemStack(GKPK.itemEthanol);
                     if (slots[2] == null) {
                         slots[2] = stack;
+                        processing = -1;
                     } else if (slots[2].getItem() == stack.getItem()) {
                         slots[2].stackSize += 1;
 
