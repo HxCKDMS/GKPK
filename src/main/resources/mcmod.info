@@ -1,0 +1,19 @@
+[
+{
+  "modid": "GKPK",
+  "name": "The Gordian Knot Pharmacy Kit",
+  "description": "Adds the concept of pharmacognosy to MineCraft",
+  "version": "${version}",
+  "credits": "Inspired by a couple of other mods, The most prominent one being MineChem.",
+  "logoFile": "",
+  "mcversion": "1.7.10",
+  "url": "https://github.com/HxCKDMS/GKPK/",
+  "updateUrl": "",
+  "authors": [ "Mandrake Fernflower", "KarelMikie3", "DrZed", "Wiggle1000"],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": [
+     "mod_MinecraftForge"
+  ]
+}
+]
