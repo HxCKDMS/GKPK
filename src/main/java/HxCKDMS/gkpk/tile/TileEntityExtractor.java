@@ -20,23 +20,27 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
     public void updateEntity() {
         if (slots == null || slots[0] == null || slots[1] == null)
             processing = -1;
-        else if (GKPK.recipes.getExtractingResult(slots[1]) != null) {
-            if (processing > 0)
+        else if (slots[0].getItem() == GKPK.itemEthanol && GKPK.recipes.getExtractingResult(slots[1]) != null) {
+            if (processing > 0) {
                 processing--;
-             else if ((slots[2] == null || slots[2].stackSize < GKPK.itemExtract.getItemStackLimit()) && processing < 1) {
-                if (processing == -1)
+            } else if ((slots[2] == null || slots[2].stackSize < GKPK.itemExtract.getItemStackLimit()) && processing < 1) {
+                if (processing == -1) {
                     processing = EXTRACTOR_TIME;
-                else {
+                } else {
                     ItemStack stack = GKPK.recipes.getExtractingResult(slots[1]);
-                    if (slots[2] == null) {
-                        slots[2] = stack;
-                        processing = -1;
-                    } else if (stack.getItem() == slots[2].getItem()) {
-                        slots[2].stackSize += 1;
+                    if (stack != null) {
+                        if (slots[2] == null) {
+                            slots[2] = stack;
+                            processing = -1;
+                            slots[0].stackSize--;
+                            slots[1].stackSize--;
+                        } else if (stack.getItem() == slots[2].getItem()) {
+                            slots[2].stackSize += 1;
 
-                        slots[0].stackSize--;
-                        slots[1] = null;
-                        processing = -1;
+                            slots[0].stackSize--;
+                            slots[1].stackSize--;
+                            processing = -1;
+                        }
                     }
                 }
             }
@@ -98,7 +102,7 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
     }
 
     @Override
-    public String getInventoryName() {return "fermenter";}
+    public String getInventoryName() {return "extractor";}
 
     @Override
     public boolean hasCustomInventoryName() {return false;}
@@ -115,8 +119,8 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-
         return slot != 2; // This appears to be broken
+        //If whoever wrote the above comment looked they'd know it only works for automated input of items
     }
 
     @Override

@@ -33,16 +33,18 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
         if (slots == null || slots[0] == null || slots[1] == null)
             processing = -1;
         else if (validItemsForSlot1.contains(slots[0].getItem()) && slots[1].getItemDamage() == 0 && slots[1].getItem() == Items.potionitem) {
-            if (processing > 0)
+            if (processing > 0) {
                 processing--;
-             else if ((slots[2] == null || slots[2].stackSize < GKPK.itemEthanol.getItemStackLimit()) && processing < 1) {
-                if (processing == -1)
+            } else if ((slots[2] == null || slots[2].stackSize < GKPK.itemEthanol.getItemStackLimit()) && processing < 1) {
+                if (processing == -1) {
                     processing = FERMENTER_TIME;
-                else {
+                } else {
                     ItemStack stack = new ItemStack(GKPK.itemEthanol);
                     if (slots[2] == null) {
                         slots[2] = stack;
                         processing = -1;
+                        slots[0].stackSize--;
+                        slots[1] = null;
                     } else if (slots[2].getItem() == stack.getItem()) {
                         slots[2].stackSize += 1;
 

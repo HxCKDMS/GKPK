@@ -33,13 +33,13 @@ public class GKPKRecipe {
 
     public ItemStack getExtractingResult(ItemStack input) {
         if (ExtractList.keySet().contains(input.getItem())) {
-            ItemStack stack = new ItemStack(GKPK.itemExtract);
-            stack.setTagCompound(new NBTTagCompound());
-            NBTTagCompound tag = stack.getTagCompound();
-            tag.setString("drugEffect", ExtractList.get(input));
+            ItemStack stack = new ItemStack(GKPK.itemExtract, 1);
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setString("drugEffect", ExtractList.get(input.getItem()));
             stack.setTagCompound(tag);
             return stack;
+        } else {
+            return null;
         }
-        return null;
     }
 }
