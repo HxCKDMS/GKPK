@@ -15,8 +15,8 @@ public class GKPKRecipe {
     private HashMap<Item, String> ExtractList = new HashMap<>();
 
     {
-        ExtractList.put(new ItemStack(Blocks.brown_mushroom).getItem(), "weed");
-        ExtractList.put(new ItemStack(Items.baked_potato).getItem(), "weed");//lel baked
+
+        ExtractList.put(new ItemStack(Items.rotten_flesh).getItem(), "nodu");
     }
 
     public static GKPKRecipe Extracting(){

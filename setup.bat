@@ -1,2 +1,2 @@
-gradle clean setupDecompWorkspace --refresh-dependencies getAssets idea
-
+gradle clean setupCiWorkspace setupDecompWorkspace --refresh-dependencies getAssets eclipse idea
+pause

@@ -71,6 +71,7 @@ public class ItemExtract extends Item { // This whole java file is a bit messy b
             }
         }
 
-        return new ItemStack(stack.getItem(), stack.stackSize - 1);
+        stack.stackSize--;
+        return stack;
     }
 }

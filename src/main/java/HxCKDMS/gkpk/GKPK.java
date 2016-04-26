@@ -30,7 +30,7 @@ import java.util.HashMap;
 @Mod (
         modid = "GKPK",
         name = "The Gordian Knot Pharmacy Kit",
-        version = "0.01"
+        version = "0.2"
 
 )
 
@@ -61,9 +61,10 @@ public class GKPK {
         GameRegistry.registerItem(itemExtract, "gExtractItem"); // Metadata Item
         GameRegistry.registerBlock(fermenter, "gFermenter"); // Fermenter
         GameRegistry.registerTileEntity(TileEntityFermenter.class, "gkpktefermenter"); // TE for fermenter
-        // GameRegistry.registerItem(pbook, "gPharmBook"); // wip book shit
-        //NewRegistering System
-        drugs.put("weed", new Drug("weed", 0x00FF00, "blur", 60, new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 4, 1), new PotionEffect(Potion.confusion.getId(), TimeConst.TICKS_PER_MINUTE * 4,1), new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_SECOND * 15,10), new PotionEffect(Potion.regeneration.getId(), TimeConst.TICKS_PER_SECOND * 15,4)));
+        // Default compound set
+        drugs.put("nodu", new Drug("Nodularin", 0xF4F4F4, "", 0, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 4), new PotionEffect(Potion.digSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
+        drugs.put("ttx", new Drug("Tetrodotoxin", 0xFEFEFE, "desaturate", TimeConst.TICKS_PER_MINUTE, new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE *2, 50), new PotionEffect(Potion.wither.getId(), TimeConst.TICKS_PER_MINUTE, 3)));
+        drugs.put("ethanol", new Drug("Ethanol", 0x000000, "blur", TimeConst.TICKS_PER_MINUTE * 2, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 2), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
     }
 
     @Mod.EventHandler
@@ -79,7 +80,6 @@ public class GKPK {
     {
     network.postInitialize();
     }
-
     private void registerPackets(){
     network.addPacket(PacketShader.class);
     }

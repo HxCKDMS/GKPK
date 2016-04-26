@@ -1,9 +1,11 @@
 package HxCKDMS.gkpk.items;
 
+import HxCKDMS.gkpk.GKPK;
 import HxCKDMS.gkpk.GordianCreativeTab;
 import HxCKDMS.gkpk.data.TimeConst;
 import cpw.mods.fml.common.IFuelHandler;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -18,12 +20,15 @@ public class ItemEthanol extends Item implements IFuelHandler {
     public ItemEthanol() {
         this.setCreativeTab(GordianCreativeTab.gordianCreativeTab);
         this.setUnlocalizedName("gEthanol");
-        this.setTextureName("GKPK:product0");
+        this.setTextureName("GKPK:ethanol");
         this.setMaxStackSize(32);
     }
 
     @Override
-    public EnumAction getItemUseAction(ItemStack item){return EnumAction.drink;}
+    public int getBurnTime (ItemStack fuel) {return 120;}
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack item) {return EnumAction.drink;}
 
     @Override
     public int getMaxItemUseDuration(ItemStack par1ItemStack) {return 32;}
@@ -41,17 +46,19 @@ public class ItemEthanol extends Item implements IFuelHandler {
     }
     
     @Override
-    public ItemStack onEaten(ItemStack item, World world, EntityPlayer player){ // TODO - trigger vodka achievement'
-        player.addPotionEffect(new PotionEffect(Potion.confusion.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2));
-        player.attackEntityFrom(DamageSource.generic, 4);
-        if(!player.capabilities.isCreativeMode) {
-                player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
-        }
-        return new ItemStack(item.getItem(), item.stackSize - 1);
-    }
+    public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
 
-    @Override
-    public int getBurnTime(ItemStack fuel) {
-        return 120;
+        if (player instanceof EntityPlayerMP) {
+            GKPK.drugs.get("ethanol").activateDrug((EntityPlayerMP) player);
+        }
+            {
+                player.attackEntityFrom(DamageSource.generic, 4);
+                if (!player.capabilities.isCreativeMode) {
+                    player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
+                }
+                item.stackSize--;
+                return item;
+            }
+
+        }
     }
-}
