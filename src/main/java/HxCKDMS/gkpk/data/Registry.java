@@ -7,8 +7,8 @@ import HxCKDMS.gkpk.event.GEventHandler;
 import HxCKDMS.gkpk.items.ItemEthanol;
 import HxCKDMS.gkpk.items.ItemExtract;
 import HxCKDMS.gkpk.items.ItemPharmacyBook;
-import HxCKDMS.gkpk.data.recipe.GKPKRecipe;
-import HxCKDMS.gkpk.block.tile.TileEntityFermenter;
+import HxCKDMS.gkpk.recipe.GKPKRecipe;
+import HxCKDMS.gkpk.tile.TileEntityFermenter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.potion.Potion;
@@ -29,9 +29,9 @@ public class Registry {
     public void preInit() {
         // Default compound set
         drugs.put("nodu", new Drug("Nodularin", 0xF4F4F4, "", 0, 0, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 4), new PotionEffect(Potion.digSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
-        drugs.put("ttx", new Drug("Tetrodotoxin", 0xFEFEFE, "desaturate", TimeConst.TICKS_PER_MINUTE, 0, new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE *2, 50), new PotionEffect(Potion.wither.getId(), TimeConst.TICKS_PER_MINUTE, 3)));
+        drugs.put("ttx", new Drug("Tetrodotoxin", 0xFEFEFE, "desaturate", TimeConst.TICKS_PER_MINUTE, 4, new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE *2, 50), new PotionEffect(Potion.wither.getId(), TimeConst.TICKS_PER_MINUTE, 3)));
         drugs.put("ethanol", new Drug("Ethanol", 0x000000, "blur", TimeConst.TICKS_PER_MINUTE * 2, 4, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 2), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
-
+        drugs.put("musc", new Drug("Muscimol", 0x30FF30, "sobel", TimeConst.TICKS_PER_MINUTE * 2, 2, new PotionEffect(Potion.damageBoost.getId(), TimeConst.TICKS_PER_MINUTE, 1), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
         MinecraftForge.EVENT_BUS.register(new GEventHandler());
     }
 
