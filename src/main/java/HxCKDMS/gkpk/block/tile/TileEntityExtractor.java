@@ -1,7 +1,7 @@
-package HxCKDMS.gkpk.tile;
+package HxCKDMS.gkpk.block.tile;
 
 import HxCKDMS.gkpk.GKPK;
-import HxCKDMS.gkpk.recipe.GKPKRecipe;
+import HxCKDMS.gkpk.data.recipe.GKPKRecipe;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;

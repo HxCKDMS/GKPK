@@ -1,6 +1,6 @@
-package HxCKDMS.gkpk.containers;
+package HxCKDMS.gkpk.block.containers;
 
-import HxCKDMS.gkpk.tile.TileEntityExtractor;
+import HxCKDMS.gkpk.block.tile.TileEntityFermenter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
 
-public class ContainerExtractor extends Container {
-    public TileEntityExtractor tile;
+public class ContainerFermenter extends Container {
+    public TileEntityFermenter tile;
 
     @Override
     public boolean canInteractWith(EntityPlayer p_75145_1_) {
@@ -30,14 +30,14 @@ public class ContainerExtractor extends Container {
         }
     }
 
-    public ContainerExtractor(EntityPlayer ply, TileEntity tile) {
+    public ContainerFermenter(EntityPlayer ply, TileEntity tile) {
         // Container slots
         addSlotToContainer(new Slot((IInventory)tile,0,39,35));
         addSlotToContainer(new Slot((IInventory)tile,1,63,35));
         addSlotToContainer(new Slot((IInventory)tile,2,118,35));
         // END
 
-        this.tile = (TileEntityExtractor) tile;
+        this.tile = (TileEntityFermenter) tile;
         bindPlayerInventory(ply.inventory);
     }
 

@@ -1,5 +1,6 @@
-package HxCKDMS.gkpk;
+package HxCKDMS.gkpk.client;
 
+import HxCKDMS.gkpk.GKPK;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 

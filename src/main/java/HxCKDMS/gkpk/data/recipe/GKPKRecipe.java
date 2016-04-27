@@ -1,4 +1,4 @@
-package HxCKDMS.gkpk.recipe;
+package HxCKDMS.gkpk.data.recipe;
 
 import HxCKDMS.gkpk.GKPK;
 import net.minecraft.item.Item;

@@ -1,7 +1,7 @@
 package HxCKDMS.gkpk.items;
 
 import HxCKDMS.gkpk.GKPK;
-import HxCKDMS.gkpk.GordianCreativeTab;
+import HxCKDMS.gkpk.client.GordianCreativeTab;
 import cpw.mods.fml.common.IFuelHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

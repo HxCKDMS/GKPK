@@ -1,7 +1,7 @@
 package HxCKDMS.gkpk.client.gui;
 
-import HxCKDMS.gkpk.containers.ContainerFermenter;
-import HxCKDMS.gkpk.tile.TileEntityFermenter;
+import HxCKDMS.gkpk.block.containers.ContainerFermenter;
+import HxCKDMS.gkpk.block.tile.TileEntityFermenter;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;

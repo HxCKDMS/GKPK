@@ -1,7 +1,7 @@
 package HxCKDMS.gkpk.items;
 
 import HxCKDMS.gkpk.GKPK;
-import HxCKDMS.gkpk.GordianCreativeTab;
+import HxCKDMS.gkpk.client.GordianCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;

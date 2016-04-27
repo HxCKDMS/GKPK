@@ -1,7 +1,7 @@
 package HxCKDMS.gkpk.client.gui;
 
-import HxCKDMS.gkpk.containers.ContainerExtractor;
-import HxCKDMS.gkpk.tile.TileEntityExtractor;
+import HxCKDMS.gkpk.block.containers.ContainerExtractor;
+import HxCKDMS.gkpk.block.tile.TileEntityExtractor;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;

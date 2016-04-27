@@ -1,5 +1,5 @@
 package HxCKDMS.gkpk.items;
-import HxCKDMS.gkpk.GordianCreativeTab;
+import HxCKDMS.gkpk.client.GordianCreativeTab;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -1,8 +1,8 @@
 package HxCKDMS.gkpk.block;
 
 import HxCKDMS.gkpk.GKPK;
-import HxCKDMS.gkpk.GordianCreativeTab;
-import HxCKDMS.gkpk.tile.TileEntityFermenter;
+import HxCKDMS.gkpk.client.GordianCreativeTab;
+import HxCKDMS.gkpk.block.tile.TileEntityFermenter;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;

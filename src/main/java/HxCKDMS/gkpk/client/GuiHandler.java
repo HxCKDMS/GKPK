@@ -1,11 +1,11 @@
-package HxCKDMS.gkpk;
+package HxCKDMS.gkpk.client;
 
 import HxCKDMS.gkpk.client.gui.GUIExtractor;
 import HxCKDMS.gkpk.client.gui.GUIFermenter;
-import HxCKDMS.gkpk.containers.ContainerExtractor;
-import HxCKDMS.gkpk.containers.ContainerFermenter;
-import HxCKDMS.gkpk.tile.TileEntityExtractor;
-import HxCKDMS.gkpk.tile.TileEntityFermenter;
+import HxCKDMS.gkpk.block.containers.ContainerExtractor;
+import HxCKDMS.gkpk.block.containers.ContainerFermenter;
+import HxCKDMS.gkpk.block.tile.TileEntityExtractor;
+import HxCKDMS.gkpk.block.tile.TileEntityFermenter;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;

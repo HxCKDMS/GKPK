@@ -1,4 +1,4 @@
-package HxCKDMS.gkpk.tile;
+package HxCKDMS.gkpk.block.tile;
 
 import HxCKDMS.gkpk.GKPK;
 import net.minecraft.entity.player.EntityPlayer;
