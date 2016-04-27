@@ -2,11 +2,15 @@ item.gEthanol.name=Ethanol
 item.gExtract.name=Extract
 itemGroup.GKPK=The Gordian Knot Pharmacy Kit
 gkpk.book.tooltip=By HxCKDMS Dev Team
-invalid.name=Placeholder Item
-opium.name=Opium
-nodu.name=Nodularin
-ttx.name=Tetrodotoxin
-ethanol.name=Ethanol
-musc.name=Muscimol
+
+drug.invalid.name=Placeholder Item
+drug.opium.name=Opium
+drug.nodu.name=Nodularin
+drug.ttx.name=Tetrodotoxin
+drug.ethanol.name=Ethanol
+drug.musc.name=Muscimol
+
+tile.gExtractor.name=Extractor
+tile.gFermenter.name=Fermenter
 
 death.attack.ethanol=%1$s drank themselves to death!

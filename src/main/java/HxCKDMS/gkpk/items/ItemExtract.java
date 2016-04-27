@@ -65,8 +65,8 @@ public class ItemExtract extends Item { // This whole java file is a bit messy b
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         if (stack.hasTagCompound() && stack.getTagCompound().getString("drugEffect") != null)
-            return stack.getTagCompound().getString("drugEffect");
-        else return "invalid";
+            return "drug." + stack.getTagCompound().getString("drugEffect");
+        else return "drug.invalid";
     }
 
     @SideOnly(Side.CLIENT)
