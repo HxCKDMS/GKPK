@@ -35,13 +35,16 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
                             if (slots[2] == null) {
                                 slots[2] = stack;
                                 slots[0].stackSize--;
+                                if (slots[0].stackSize < 1) slots[0] = null;
                                 slots[1].stackSize--;
+                                if (slots[1].stackSize < 1) slots[1] = null;
                             } else if (stack.getItem() == slots[2].getItem()) {
                                 slots[2].stackSize += 1;
 
                                 slots[0].stackSize--;
+                                if (slots[0].stackSize < 1) slots[0] = null;
                                 slots[1].stackSize--;
-                                processing = -1;
+                                if (slots[1].stackSize < 1) slots[1] = null;
                             }
                         }
                     }

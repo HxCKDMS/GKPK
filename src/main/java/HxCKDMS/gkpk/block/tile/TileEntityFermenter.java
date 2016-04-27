@@ -44,11 +44,13 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
                         if (slots[2] == null) {
                             slots[2] = stack;
                             slots[0].stackSize--;
+                            if (slots[0].stackSize < 1) slots[0] = null;
                             slots[1] = null;
                         } else if (slots[2].getItem() == stack.getItem()) {
                             slots[2].stackSize += 1;
 
                             slots[0].stackSize--;
+                            if (slots[0].stackSize < 1) slots[0] = null;
                             slots[1] = null;
                         }
                     }
