@@ -90,9 +90,10 @@ public class ItemExtract extends Item { // This whole java file is a bit messy b
             GKPK.registry.drugs.get(stack.getTagCompound().getString("drugEffect")).activateDrug((EntityPlayerMP) player);
             if (!player.capabilities.isCreativeMode) {
                 player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
+                stack.stackSize--;
+                if (stack.stackSize < 1) return null;
             }
         }
-        stack.stackSize--;
         return stack;
     }
 }

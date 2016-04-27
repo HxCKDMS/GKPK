@@ -52,6 +52,7 @@ public class ItemEthanol extends Item implements IFuelHandler {
         if (!player.capabilities.isCreativeMode) {
             player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
             stack.stackSize--;
+            if (stack.stackSize < 1) return null;
         }
         return stack;
     }
