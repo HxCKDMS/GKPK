@@ -17,6 +17,8 @@ import net.minecraft.world.World;
 public class ItemExtract extends Item { // This whole java file is a bit messy but it does the joj
     public ItemExtract() {
         setCreativeTab(GordianCreativeTab.gordianCreativeTab);
+        this.setUnlocalizedName("gExtract");
+        this.setTextureName("GKPK:extract");
     }
 
     @Override

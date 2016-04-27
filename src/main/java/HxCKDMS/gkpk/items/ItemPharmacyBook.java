@@ -18,13 +18,14 @@ public class ItemPharmacyBook extends Item {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer ply, List tooltip, boolean wtf)
-    {
-    tooltip.add("§6 " + StatCollector.translateToLocal("gkpk.book.tooltip"));
+    @SuppressWarnings("unchecked")
+    public void addInformation(ItemStack stack, EntityPlayer ply, List tooltip, boolean wtf) {
+        tooltip.add("§6 " + StatCollector.translateToLocal("gkpk.book.tooltip"));
     }
 
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer ply) {
+        //Open GUI
         return stack;
     }
 }

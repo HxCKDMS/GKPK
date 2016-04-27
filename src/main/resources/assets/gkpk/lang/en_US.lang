@@ -1,5 +1,10 @@
 item.gEthanol.name=Ethanol
+item.gExtract.name=Extract
 itemGroup.GKPK=The Gordian Knot Pharmacy Kit
-gkpk.book.tooltip=By Fernflower and Kling
+gkpk.book.tooltip=By HxCKDMS Dev Team
 invalid.name=Placeholder Item
-weed.name=Weed Extract
+opium.name=Opium
+nodu.name=Nodularin
+ttx.name=Tetrodotoxin
+ethanol.name=Ethanol
+musc.name=Muscimol

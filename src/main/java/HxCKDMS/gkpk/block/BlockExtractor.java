@@ -48,13 +48,14 @@ public class BlockExtractor extends BlockContainer {
     public void registerBlockIcons(IIconRegister iconRegister){
         bSidedTextureArray = new IIcon[6];
 
-        bSidedTextureArray[0] = iconRegister.registerIcon("GKPK" + ":exBottomNBack");
-        bSidedTextureArray[1] = iconRegister.registerIcon("GKPK" + ":exTop");
-        bSidedTextureArray[2] = iconRegister.registerIcon("GKPK" + ":exFront");
-        bSidedTextureArray[3] = iconRegister.registerIcon("GKPK" + ":exBottomNBack");
-        bSidedTextureArray[4] = iconRegister.registerIcon("GKPK" + ":exBottomNBack");
-        bSidedTextureArray[5] = iconRegister.registerIcon("GKPK" + ":exBottomNBack");
+        bSidedTextureArray[0] = iconRegister.registerIcon("GKPK" + ":blockBottom");
+        bSidedTextureArray[1] = iconRegister.registerIcon("GKPK" + ":blockExtractorTop");
+        bSidedTextureArray[2] = iconRegister.registerIcon("GKPK" + ":blockExtractorFace");
+        bSidedTextureArray[3] = iconRegister.registerIcon("GKPK" + ":blockSides");
+        bSidedTextureArray[4] = iconRegister.registerIcon("GKPK" + ":blockSides");
+        bSidedTextureArray[5] = iconRegister.registerIcon("GKPK" + ":blockSides");
     }
+
     @Override
     public IIcon getIcon(int side, int metadata){
         ForgeDirection sDirection = ForgeDirection.getOrientation(side);

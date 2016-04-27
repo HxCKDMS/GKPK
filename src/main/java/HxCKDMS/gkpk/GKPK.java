@@ -21,6 +21,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
@@ -50,8 +51,6 @@ public class GKPK {
     public static BlockFermenter fermenter = new BlockFermenter();
     public static ItemPharmacyBook pbook = new ItemPharmacyBook();
 
-    public static GKPKRecipe recipes = new GKPKRecipe();
-
     public static HashMap<EntityPlayerMP, Integer> playersWithShaders = new HashMap<>();
 
     @Mod.EventHandler
@@ -65,6 +64,8 @@ public class GKPK {
         drugs.put("nodu", new Drug("Nodularin", 0xF4F4F4, "", 0, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 4), new PotionEffect(Potion.digSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
         drugs.put("ttx", new Drug("Tetrodotoxin", 0xFEFEFE, "desaturate", TimeConst.TICKS_PER_MINUTE, new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE *2, 50), new PotionEffect(Potion.wither.getId(), TimeConst.TICKS_PER_MINUTE, 3)));
         drugs.put("ethanol", new Drug("Ethanol", 0x000000, "blur", TimeConst.TICKS_PER_MINUTE * 2, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 2), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
+
+        GKPKRecipe.Extracting().registerExtractRecipe(Items.rotten_flesh, "nodu");
     }
 
     @Mod.EventHandler

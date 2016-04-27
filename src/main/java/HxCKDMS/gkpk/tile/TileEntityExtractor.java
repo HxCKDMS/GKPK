@@ -1,6 +1,7 @@
 package HxCKDMS.gkpk.tile;
 
 import HxCKDMS.gkpk.GKPK;
+import HxCKDMS.gkpk.recipe.GKPKRecipe;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -20,14 +21,14 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
     public void updateEntity() {
         if (slots == null || slots[0] == null || slots[1] == null)
             processing = -1;
-        else if (slots[0].getItem() == GKPK.itemEthanol && GKPK.recipes.getExtractingResult(slots[1]) != null) {
+        else if (slots[0].getItem() == GKPK.itemEthanol && GKPKRecipe.Extracting().getExtractingResult(slots[1]) != null) {
             if (processing > 0) {
                 processing--;
             } else if ((slots[2] == null || slots[2].stackSize < GKPK.itemExtract.getItemStackLimit()) && processing < 1) {
                 if (processing == -1) {
                     processing = EXTRACTOR_TIME;
                 } else {
-                    ItemStack stack = GKPK.recipes.getExtractingResult(slots[1]);
+                    ItemStack stack = GKPKRecipe.Extracting().getExtractingResult(slots[1]);
                     if (stack != null) {
                         if (slots[2] == null) {
                             slots[2] = stack;
