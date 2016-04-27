@@ -26,7 +26,7 @@ public class GKPKRecipe {
 
     public ItemStack getExtractingResult(ItemStack input) {
         if (ExtractList.keySet().contains(input.getItem())) {
-            ItemStack stack = new ItemStack(GKPK.itemExtract, 1);
+            ItemStack stack = new ItemStack(GKPK.registry.itemExtract, 1);
             NBTTagCompound tag = new NBTTagCompound();
             tag.setString("drugEffect", ExtractList.get(input.getItem()));
             stack.setTagCompound(tag);

@@ -5,20 +5,40 @@ import HxCKDMS.gkpk.GordianCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemExtract extends Item { // This whole java file is a bit messy but it does the joj
+    @Override
+    @SuppressWarnings("unchecked")
+    public void getSubItems(Item item, CreativeTabs tab, List list) {
+        List<ItemStack> dgs = new ArrayList<>();
+        GKPK.registry.drugs.keySet().forEach(drug -> {
+            ItemStack stack = new ItemStack(item, 1, 0);
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setString("drugEffect", drug);
+            stack.setTagCompound(tag);
+            dgs.add(stack);
+        });
+        list.addAll(dgs);
+    }
+
     public ItemExtract() {
         setCreativeTab(GordianCreativeTab.gordianCreativeTab);
         this.setUnlocalizedName("gExtract");
         this.setTextureName("GKPK:extract");
+        hasSubtypes = true;
     }
 
     @Override
@@ -67,12 +87,11 @@ public class ItemExtract extends Item { // This whole java file is a bit messy b
     @Override
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
         if (player instanceof EntityPlayerMP) {
-            GKPK.drugs.get(stack.getTagCompound().getString("drugEffect")).activateDrug((EntityPlayerMP) player);
+            GKPK.registry.drugs.get(stack.getTagCompound().getString("drugEffect")).activateDrug((EntityPlayerMP) player);
             if (!player.capabilities.isCreativeMode) {
                 player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
             }
         }
-
         stack.stackSize--;
         return stack;
     }

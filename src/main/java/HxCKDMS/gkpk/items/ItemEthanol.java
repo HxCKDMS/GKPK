@@ -9,7 +9,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class ItemEthanol extends Item implements IFuelHandler {
@@ -47,14 +46,13 @@ public class ItemEthanol extends Item implements IFuelHandler {
     }
 
     @Override
-    public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
+    public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
         if (player instanceof EntityPlayerMP)
-            GKPK.drugs.get("ethanol").activateDrug((EntityPlayerMP) player);
-        player.attackEntityFrom(DamageSource.generic, 4);
+            GKPK.registry.drugs.get("ethanol").activateDrug((EntityPlayerMP) player);
         if (!player.capabilities.isCreativeMode) {
             player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
+            stack.stackSize--;
         }
-        item.stackSize--;
-        return item;
+        return stack;
     }
 }

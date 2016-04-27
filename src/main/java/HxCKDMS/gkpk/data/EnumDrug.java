@@ -14,7 +14,7 @@ Second digit = color
 4 = red
 
 */
-
+@Deprecated
 public enum EnumDrug {
 
 	// DATA BEGINS HERE

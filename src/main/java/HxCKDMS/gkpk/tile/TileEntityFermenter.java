@@ -18,11 +18,10 @@ import static HxCKDMS.gkpk.data.TimeConst.FERMENTER_TIME;
 public class TileEntityFermenter extends TileEntity implements ISidedInventory {
     private ItemStack[] slots;
 
-    private List<Item> validItemsForSlot1 = new ArrayList<>();
-
+    private List<Item> validIngredients = new ArrayList<>();
     {
-        validItemsForSlot1.add(Items.wheat);
-        validItemsForSlot1.add(Items.potato);
+        validIngredients.add(Items.wheat);
+        validIngredients.add(Items.potato);
     }
 
     public TileEntityFermenter() {slots = new ItemStack[3];}
@@ -32,14 +31,14 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
     public void updateEntity() {
         if (slots == null || slots[0] == null || slots[1] == null)
             processing = -1;
-        else if (validItemsForSlot1.contains(slots[0].getItem()) && slots[1].getItemDamage() == 0 && slots[1].getItem() == Items.potionitem) {
+        else if (validIngredients.contains(slots[0].getItem()) && slots[1].getItemDamage() == 0 && slots[1].getItem() == Items.potionitem) {
             if (processing > 0) {
                 processing--;
-            } else if ((slots[2] == null || slots[2].stackSize < GKPK.itemEthanol.getItemStackLimit()) && processing < 1) {
+            } else if ((slots[2] == null || slots[2].stackSize < GKPK.registry.itemEthanol.getItemStackLimit()) && processing < 1) {
                 if (processing == -1) {
                     processing = FERMENTER_TIME;
                 } else {
-                    ItemStack stack = new ItemStack(GKPK.itemEthanol);
+                    ItemStack stack = new ItemStack(GKPK.registry.itemEthanol);
                     if (slots[2] == null) {
                         slots[2] = stack;
                         processing = -1;
@@ -58,18 +57,18 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
     }
 
     @Override
-    public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
+    public int[] getAccessibleSlotsFromSide(int side) {
         return new int[0];
     }
 
     @Override
-    public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_, int p_102007_3_) {
-        return false;
+    public boolean canInsertItem(int slot, ItemStack stack, int side) {
+        return isItemValidForSlot(slot, stack);
     }
 
     @Override
-    public boolean canExtractItem(int p_102008_1_, ItemStack p_102008_2_, int p_102008_3_) {
-        return false;
+    public boolean canExtractItem(int slot, ItemStack stack, int side) {
+        return slot == 2;
     }
 
     @Override
@@ -115,13 +114,19 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
     public String getInventoryName() {return "fermenter";}
 
     @Override
-    public boolean hasCustomInventoryName() {return false;}
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 
     @Override
-    public int getInventoryStackLimit() {return 64;}
+    public int getInventoryStackLimit() {
+        return 64;
+    }
 
     @Override
-    public boolean isUseableByPlayer(EntityPlayer ply) {return true;}
+    public boolean isUseableByPlayer(EntityPlayer ply) {
+        return true;
+    }
 
     @Override public void openInventory() {}
 
@@ -129,8 +134,11 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-
-        return slot != 2; // This appears to be broken
+        switch (slot) {
+            case 0 : return validIngredients.contains(stack.getItem());
+            case 1 : return stack.getItem() == Items.potionitem && stack.getItemDamage() == 0;
+            default : return false;
+        }
     }
 
     @Override
@@ -150,16 +158,15 @@ public class TileEntityFermenter extends TileEntity implements ISidedInventory {
     public void writeToNBT(NBTTagCompound TagCompound) {
         super.writeToNBT(TagCompound);
         NBTTagList itemlist = new NBTTagList();
-        for (int i = 0; i < slots.length; i++){
+        for (int i = 0; i < slots.length; i++) {
             ItemStack stack = slots[i];
-            if (stack != null){
-             NBTTagCompound tag = new NBTTagCompound();
+            if (stack != null) {
+                NBTTagCompound tag = new NBTTagCompound();
                 tag.setByte("Slot",(byte)i);
                 stack.writeToNBT(tag);
                 itemlist.appendTag(tag);
             }
-
         }
-    TagCompound.setTag("Inventory",itemlist);
+        TagCompound.setTag("Inventory",itemlist);
     }
 }

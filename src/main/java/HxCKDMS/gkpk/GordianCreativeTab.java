@@ -7,7 +7,7 @@ public class GordianCreativeTab {
     public static CreativeTabs gordianCreativeTab = new CreativeTabs("GKPK") {
         @Override
         public Item getTabIconItem() {
-            return GKPK.itemEthanol;
+            return GKPK.registry.itemEthanol;
         }
     };
 }

@@ -8,3 +8,5 @@ nodu.name=Nodularin
 ttx.name=Tetrodotoxin
 ethanol.name=Ethanol
 musc.name=Muscimol
+
+death.attack.ethanol=%1$s drank themselves to death!

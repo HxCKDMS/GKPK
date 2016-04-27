@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-
+@Deprecated
 public class DrugData {
     public static void doEffect(EnumDrug drug, EntityPlayerMP ply) {
         World world = ply.worldObj;

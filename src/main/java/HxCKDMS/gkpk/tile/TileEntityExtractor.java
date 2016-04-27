@@ -21,10 +21,10 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
     public void updateEntity() {
         if (slots == null || slots[0] == null || slots[1] == null)
             processing = -1;
-        else if (slots[0].getItem() == GKPK.itemEthanol && GKPKRecipe.Extracting().getExtractingResult(slots[1]) != null) {
+        else if (slots[0].getItem() == GKPK.registry.itemEthanol && GKPKRecipe.Extracting().getExtractingResult(slots[1]) != null) {
             if (processing > 0) {
                 processing--;
-            } else if ((slots[2] == null || slots[2].stackSize < GKPK.itemExtract.getItemStackLimit()) && processing < 1) {
+            } else if ((slots[2] == null || slots[2].stackSize < GKPK.registry.itemExtract.getItemStackLimit()) && processing < 1) {
                 if (processing == -1) {
                     processing = EXTRACTOR_TIME;
                 } else {
@@ -54,13 +54,13 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
     }
 
     @Override
-    public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_, int p_102007_3_) {
-        return false;
+    public boolean canInsertItem(int slot, ItemStack stack, int side) {
+        return isItemValidForSlot(slot, stack);
     }
 
     @Override
-    public boolean canExtractItem(int p_102008_1_, ItemStack p_102008_2_, int p_102008_3_) {
-        return false;
+    public boolean canExtractItem(int slot, ItemStack stack, int side) {
+        return slot == 2;
     }
 
     @Override
@@ -95,10 +95,12 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
     }
 
     @Override
-    public void setInventorySlotContents(int slot, ItemStack itemStack) {
-        slots[slot] = itemStack;
-        if(itemStack != null && itemStack.stackSize > getInventoryStackLimit()){
-            itemStack.stackSize = getInventoryStackLimit();
+    public void setInventorySlotContents(int slot, ItemStack stack) {
+        if (isItemValidForSlot(slot, stack)) {
+            slots[slot] = stack;
+            if (stack != null && stack.stackSize > getInventoryStackLimit()) {
+                stack.stackSize = getInventoryStackLimit();
+            }
         }
     }
 
@@ -120,8 +122,11 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        return slot != 2; // This appears to be broken
-        //If whoever wrote the above comment looked they'd know it only works for automated input of items
+        switch (slot) {
+            case 0 : return stack.getItem() == GKPK.registry.itemEthanol;
+            case 1 : return GKPKRecipe.Extracting().getExtractingResult(stack) != null;
+            default : return false;
+        }
     }
 
     @Override
@@ -151,6 +156,6 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
             }
 
         }
-    TagCompound.setTag("Inventory",itemlist);
+        TagCompound.setTag("Inventory",itemlist);
     }
 }
