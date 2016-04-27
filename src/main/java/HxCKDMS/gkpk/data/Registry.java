@@ -3,14 +3,17 @@ package HxCKDMS.gkpk.data;
 import HxCKDMS.HxCCore.api.Utils.LogHelper;
 import HxCKDMS.gkpk.block.BlockExtractor;
 import HxCKDMS.gkpk.block.BlockFermenter;
+import HxCKDMS.gkpk.block.tile.TileEntityExtractor;
+import HxCKDMS.gkpk.block.tile.TileEntityFermenter;
+import HxCKDMS.gkpk.data.recipe.GKPKRecipe;
 import HxCKDMS.gkpk.event.GEventHandler;
 import HxCKDMS.gkpk.items.ItemEthanol;
 import HxCKDMS.gkpk.items.ItemExtract;
 import HxCKDMS.gkpk.items.ItemPharmacyBook;
-import HxCKDMS.gkpk.recipe.GKPKRecipe;
-import HxCKDMS.gkpk.tile.TileEntityFermenter;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,7 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import java.util.HashMap;
 
 public class Registry {
-    public HashMap<String, Drug> drugs = new HashMap<String, Drug>();
+    public HashMap<String, Drug> drugs = new HashMap<>();
 
     public BlockExtractor blockextractor = new BlockExtractor();
     public ItemEthanol itemEthanol = new ItemEthanol();
@@ -42,12 +45,15 @@ public class Registry {
         GameRegistry.registerBlock(blockextractor, "gExtractor"); // Extractor
         GameRegistry.registerBlock(fermenter, "gFermenter"); // Fermenter
 
-        GameRegistry.registerTileEntity(TileEntityFermenter.class, "gkpktefermenter"); // TE for fermenter
+        GameRegistry.registerTileEntity(TileEntityFermenter.class, "GKPK_Fermenter"); // TE for fermenter
+        GameRegistry.registerTileEntity(TileEntityExtractor.class, "GKPK_Extractor"); // TE for Extactor
     }
 
     public void postInit() {
         //Extractor Recipes
         GKPKRecipe.Extracting().registerExtractRecipe(Items.rotten_flesh, "nodu");
+        GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
+        GKPKRecipe.Extracting().registerExtractRecipe(Items.fish, 3, "ttx");
 
         LogHelper.info("There has been " + drugs.size() + " drugs initialized!", "GKPK");
         LogHelper.info("There has been " + GKPKRecipe.Extracting().getExtractList().size() + " Extractor recipes initialized!", "GKPK");

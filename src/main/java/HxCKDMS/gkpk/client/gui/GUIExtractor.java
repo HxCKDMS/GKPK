@@ -12,6 +12,7 @@ import static HxCKDMS.gkpk.data.TimeConst.EXTRACTOR_TIME;
 public class GUIExtractor extends GuiContainer {
     private byte bananaProgress = 0;
     private byte bananaCD = 0;
+    private boolean banana = false;
     private TileEntityExtractor extractor;
     public GUIExtractor(Container extractor) {
         super(extractor);
@@ -29,7 +30,7 @@ public class GUIExtractor extends GuiContainer {
         if (progress <= 0 || extractor.processing <= 0) progress = 0;
         drawTexturedModalRect(xStart + 87, yStart + 33, 180, 0, progress, 19);
 
-        if (progress != 0) {
+        if (progress != 0 && banana) {
             mc.getTextureManager().bindTexture(new ResourceLocation("GKPK" + ":textures/gui/banana/tmp-" + bananaProgress + ".png"));
             drawTexturedModalRect(xStart + 150, yStart - 80, 0, 0, 255, 260);
             if (bananaCD < 1) {

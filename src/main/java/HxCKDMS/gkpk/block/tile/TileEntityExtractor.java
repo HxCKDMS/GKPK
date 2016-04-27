@@ -28,19 +28,21 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
                 if (processing == -1) {
                     processing = EXTRACTOR_TIME;
                 } else {
-                    ItemStack stack = GKPKRecipe.Extracting().getExtractingResult(slots[1]);
-                    if (stack != null) {
-                        if (slots[2] == null) {
-                            slots[2] = stack;
-                            processing = -1;
-                            slots[0].stackSize--;
-                            slots[1].stackSize--;
-                        } else if (stack.getItem() == slots[2].getItem()) {
-                            slots[2].stackSize += 1;
+                    processing = -1;
+                    if (!worldObj.isRemote) {
+                        ItemStack stack = GKPKRecipe.Extracting().getExtractingResult(slots[1]);
+                        if (stack != null) {
+                            if (slots[2] == null) {
+                                slots[2] = stack;
+                                slots[0].stackSize--;
+                                slots[1].stackSize--;
+                            } else if (stack.getItem() == slots[2].getItem()) {
+                                slots[2].stackSize += 1;
 
-                            slots[0].stackSize--;
-                            slots[1].stackSize--;
-                            processing = -1;
+                                slots[0].stackSize--;
+                                slots[1].stackSize--;
+                                processing = -1;
+                            }
                         }
                     }
                 }
@@ -75,7 +77,7 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
         if(itemStack != null){
             if(itemStack.stackSize <= amount){
                 setInventorySlotContents(slot, null);
-            }else{
+            } else {
                 itemStack = itemStack.splitStack(amount);
                 if(itemStack.stackSize == 0){
                     setInventorySlotContents(slot, null);
@@ -96,12 +98,12 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
 
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
-        if (isItemValidForSlot(slot, stack)) {
+//        if (isItemValidForSlot(slot, stack)) {
             slots[slot] = stack;
             if (stack != null && stack.stackSize > getInventoryStackLimit()) {
                 stack.stackSize = getInventoryStackLimit();
             }
-        }
+//        }
     }
 
     @Override
@@ -122,11 +124,13 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        switch (slot) {
-            case 0 : return stack.getItem() == GKPK.registry.itemEthanol;
-            case 1 : return GKPKRecipe.Extracting().getExtractingResult(stack) != null;
-            default : return false;
-        }
+        if (stack != null)
+            switch (slot) {
+                case 0: return stack.getItem() == GKPK.registry.itemEthanol;
+                case 1: return GKPKRecipe.Extracting().getExtractingResult(stack) != null;
+                default: return false;
+            }
+        else return false;
     }
 
     @Override
