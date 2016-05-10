@@ -52,7 +52,7 @@ public class Registry {
     public void postInit() {
         //Extractor Recipes
         GKPKRecipe.Extracting().registerExtractRecipe(Items.rotten_flesh, "nodu");
-        // GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
+        GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
         GKPKRecipe.Extracting().registerExtractRecipe(Items.fish, 3, "ttx");
 
         LogHelper.info("There has been " + drugs.size() + " drugs initialized!", "GKPK");
