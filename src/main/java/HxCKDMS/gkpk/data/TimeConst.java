@@ -1,5 +1,4 @@
-// Class shamelessy reused from minechem
-//TODO Rename to lib, and change to HxC format and then remove above comment
+// TODO: Merge this into a shared refrence class
 package HxCKDMS.gkpk.data;
 public class TimeConst {
     public static final int TICKS_PER_SECOND  = 20;
