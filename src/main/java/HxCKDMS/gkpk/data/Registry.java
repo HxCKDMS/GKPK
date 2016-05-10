@@ -31,10 +31,10 @@ public class Registry {
 
     public void preInit() {
         // Default compound set
-        drugs.put("nodu", new Drug("Nodularin", 0xF4F4F4, "", 0, 0, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 4), new PotionEffect(Potion.digSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
-        drugs.put("ttx", new Drug("Tetrodotoxin", 0xFEFEFE, "desaturate", TimeConst.TICKS_PER_MINUTE, 4, new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE *2, 50), new PotionEffect(Potion.wither.getId(), TimeConst.TICKS_PER_MINUTE, 3)));
-        drugs.put("ethanol", new Drug("Ethanol", 0x000000, "blur", TimeConst.TICKS_PER_MINUTE * 2, 4, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 2), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
-        drugs.put("musc", new Drug("Muscimol", 0x30FF30, "sobel", TimeConst.TICKS_PER_MINUTE * 2, 2, new PotionEffect(Potion.damageBoost.getId(), TimeConst.TICKS_PER_MINUTE, 1), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2)));
+        drugs.put("nodu", new Drug("Nodularin", 0xF4F4F4, "", 0, 0, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 4), new PotionEffect(Potion.digSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2))); // From zombie flesh
+        drugs.put("ttx", new Drug("Tetrodotoxin", 0xFEFEFE, "desaturate", TimeConst.TICKS_PER_MINUTE, 4, new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE *2, 50), new PotionEffect(Potion.wither.getId(), TimeConst.TICKS_PER_MINUTE, 3))); // From pufferfish
+        drugs.put("ethanol", new Drug("Ethanol", 0x000000, "blur", TimeConst.TICKS_PER_MINUTE * 2, 4, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 2), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2))); // internal 
+        drugs.put("musc", new Drug("Muscimol", 0x30FF30, "sobel", TimeConst.TICKS_PER_MINUTE * 2, 2, new PotionEffect(Potion.damageBoost.getId(), TimeConst.TICKS_PER_MINUTE, 1), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2))); // From red mushroom
         MinecraftForge.EVENT_BUS.register(new GEventHandler());
     }
 
@@ -52,7 +52,7 @@ public class Registry {
     public void postInit() {
         //Extractor Recipes
         GKPKRecipe.Extracting().registerExtractRecipe(Items.rotten_flesh, "nodu");
-        GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
+        // GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
         GKPKRecipe.Extracting().registerExtractRecipe(Items.fish, 3, "ttx");
 
         LogHelper.info("There has been " + drugs.size() + " drugs initialized!", "GKPK");
