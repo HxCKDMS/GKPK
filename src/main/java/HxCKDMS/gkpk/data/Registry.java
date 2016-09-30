@@ -9,7 +9,6 @@ import HxCKDMS.gkpk.data.recipe.GKPKRecipe;
 import HxCKDMS.gkpk.event.GEventHandler;
 import HxCKDMS.gkpk.items.ItemEthanol;
 import HxCKDMS.gkpk.items.ItemExtract;
-import HxCKDMS.gkpk.items.ItemPharmacyBook;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -27,7 +26,6 @@ public class Registry {
     public ItemEthanol itemEthanol = new ItemEthanol();
     public ItemExtract itemExtract = new ItemExtract();
     public BlockFermenter fermenter = new BlockFermenter();
-    public ItemPharmacyBook pbook = new ItemPharmacyBook();
 
     public void preInit() {
         // Default compound set
@@ -55,7 +53,7 @@ public class Registry {
         GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
         GKPKRecipe.Extracting().registerExtractRecipe(Items.fish, 3, "ttx");
 
-        LogHelper.info("There has been " + drugs.size() + " drugs initialized!", "GKPK");
+        LogHelper.info("There has been " + drugs.size() + " drugs added", "GKPK");
         LogHelper.info("There has been " + GKPKRecipe.Extracting().getExtractList().size() + " Extractor recipes initialized!", "GKPK");
     }
 }
