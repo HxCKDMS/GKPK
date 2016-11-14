@@ -11,6 +11,10 @@ public class Drug {
     private int RGB = 0x000000, shaderTimer, damage = 0;
     private PotionEffect[] pots = new PotionEffect[]{};
 
+    public Drug () {
+
+    }
+
     public Drug (String name, int RGB, String shader, int shaderTime, int dmg, PotionEffect... pots) {
         this.name = name;
         this.RGB = RGB;
