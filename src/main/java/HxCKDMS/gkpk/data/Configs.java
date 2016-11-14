@@ -19,10 +19,10 @@ public class Configs {
         drugs.putIfAbsent("ethanol", new Drug("Ethanol", 0x000000, "blur", TimeConst.TICKS_PER_MINUTE * 2, 4, new PotionEffect(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 2), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2))); // internal
         drugs.putIfAbsent("musc", new Drug("Muscimol", 0x30FF30, "sobel", TimeConst.TICKS_PER_MINUTE * 2, 2, new PotionEffect(Potion.damageBoost.getId(), TimeConst.TICKS_PER_MINUTE, 1), new PotionEffect(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2))); // From red mushroom
 
-        customRecipes.putIfAbsent("minecraft:potato:1", "ttx");
+        customRecipes.putIfAbsent("minecraft:potato:0", "ttx");
     }
 
-    public void init() {
+    public static void init() {
         customRecipes.forEach((in, out) -> {
             String[] t = in.split(":");
             if (t.length == 2)

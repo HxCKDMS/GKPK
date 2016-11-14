@@ -9,7 +9,7 @@ import HxCKDMS.gkpk.event.GEventHandler;
 import HxCKDMS.gkpk.items.ItemEthanol;
 import HxCKDMS.gkpk.items.ItemExtract;
 import cpw.mods.fml.common.registry.GameRegistry;
-import hxckdms.hxcutils.LogHelper;
+import hxckdms.hxccore.utilities.Logger;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
@@ -43,7 +43,9 @@ public class Registry {
         GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
         GKPKRecipe.Extracting().registerExtractRecipe(Items.fish, 3, "ttx");
 
-        LogHelper.info("There has been " + Configs.drugs.size() + " drugs added", "GKPK");
-        LogHelper.info("There has been " + GKPKRecipe.Extracting().getExtractList().size() + " Extractor recipes initialized!", "GKPK");
+        Configs.init();
+
+        Logger.info("There has been " + Configs.drugs.size() + " drugs added", "GKPK");
+        Logger.info("There has been " + GKPKRecipe.Extracting().getExtractList().size() + " Extractor recipes initialized!", "GKPK");
     }
 }

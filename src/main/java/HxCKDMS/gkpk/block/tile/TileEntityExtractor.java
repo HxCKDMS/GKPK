@@ -19,9 +19,9 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
 
     @Override
     public void updateEntity() {
-        if (slots == null || slots[0] == null || slots[1] == null)
+        if (slots == null || slots[1] == null || slots[0] == null)
             processing = -1;
-        else if (slots[0].getItem() == GKPK.registry.itemEthanol && GKPKRecipe.Extracting().getExtractingResult(slots[1]) != null) {
+        else if (slots[1].getItem() == GKPK.registry.itemEthanol && GKPKRecipe.Extracting().getExtractingResult(slots[0]) != null) {
             if (processing > 0) {
                 processing--;
             } else if ((slots[2] == null || slots[2].stackSize < GKPK.registry.itemExtract.getItemStackLimit()) && processing < 1) {
@@ -30,21 +30,21 @@ public class TileEntityExtractor extends TileEntity implements ISidedInventory {
                 } else {
                     processing = -1;
                     if (!worldObj.isRemote) {
-                        ItemStack stack = GKPKRecipe.Extracting().getExtractingResult(slots[1]);
+                        ItemStack stack = GKPKRecipe.Extracting().getExtractingResult(slots[0]);
                         if (stack != null) {
                             if (slots[2] == null) {
                                 slots[2] = stack;
-                                slots[0].stackSize--;
-                                if (slots[0].stackSize < 1) slots[0] = null;
                                 slots[1].stackSize--;
                                 if (slots[1].stackSize < 1) slots[1] = null;
+                                slots[0].stackSize--;
+                                if (slots[0].stackSize < 1) slots[0] = null;
                             } else if (stack.getItem() == slots[2].getItem()) {
                                 slots[2].stackSize += 1;
 
-                                slots[0].stackSize--;
-                                if (slots[0].stackSize < 1) slots[0] = null;
                                 slots[1].stackSize--;
                                 if (slots[1].stackSize < 1) slots[1] = null;
+                                slots[0].stackSize--;
+                                if (slots[0].stackSize < 1) slots[0] = null;
                             }
                         }
                     }
