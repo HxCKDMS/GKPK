@@ -1,7 +1,7 @@
 package HxCKDMS.gkpk.items;
 
-import HxCKDMS.gkpk.GKPK;
 import HxCKDMS.gkpk.client.GordianCreativeTab;
+import HxCKDMS.gkpk.data.Configs;
 import cpw.mods.fml.common.IFuelHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -48,7 +48,7 @@ public class ItemEthanol extends Item implements IFuelHandler {
     @Override
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
         if (player instanceof EntityPlayerMP)
-            GKPK.registry.drugs.get("ethanol").activateDrug((EntityPlayerMP) player);
+            Configs.drugs.get("ethanol").activateDrug((EntityPlayerMP) player);
         if (!player.capabilities.isCreativeMode) {
             player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
             stack.stackSize--;

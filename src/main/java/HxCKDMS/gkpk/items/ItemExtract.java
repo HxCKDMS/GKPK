@@ -1,7 +1,7 @@
 package HxCKDMS.gkpk.items;
 
-import HxCKDMS.gkpk.GKPK;
 import HxCKDMS.gkpk.client.GordianCreativeTab;
+import HxCKDMS.gkpk.data.Configs;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -24,7 +24,7 @@ public class ItemExtract extends Item { // This whole java file is a bit messy b
     @SuppressWarnings("unchecked")
     public void getSubItems(Item item, CreativeTabs tab, List list) {
         List<ItemStack> dgs = new ArrayList<>();
-        GKPK.registry.drugs.keySet().forEach(drug -> {
+        Configs.drugs.keySet().forEach(drug -> {
             ItemStack stack = new ItemStack(item, 1, 0);
             NBTTagCompound tag = new NBTTagCompound();
             tag.setString("drugEffect", drug);
@@ -87,7 +87,7 @@ public class ItemExtract extends Item { // This whole java file is a bit messy b
     @Override
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
         if (player instanceof EntityPlayerMP) {
-            GKPK.registry.drugs.get(stack.getTagCompound().getString("drugEffect")).activateDrug((EntityPlayerMP) player);
+            Configs.drugs.get(stack.getTagCompound().getString("drugEffect")).activateDrug((EntityPlayerMP) player);
             if (!player.capabilities.isCreativeMode) {
                 player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
                 stack.stackSize--;
