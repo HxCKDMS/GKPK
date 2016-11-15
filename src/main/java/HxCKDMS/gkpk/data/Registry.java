@@ -24,6 +24,7 @@ public class Registry {
     public void preInit() {
         // Default compound set
         MinecraftForge.EVENT_BUS.register(new GEventHandler());
+       // GameRegistry.addRecipe(new ItemStack(BlockExtractor), "opo", "pep", "opo", 'e', Items.ender_eye, 'o', Blocks.obsidian, 'p', Items.ender_pearl);
     }
 
     public void init() {
