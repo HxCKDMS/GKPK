@@ -17,8 +17,9 @@ public class Configs {
         drugs.putIfAbsent("ttx", new Drug("Tetrodotoxin", 0xFEFEFE, "desaturate", TimeConst.TICKS_PER_MINUTE, 4, new Drug.dummyPot(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE *2, 50), new Drug.dummyPot(Potion.wither.getId(), TimeConst.TICKS_PER_MINUTE, 3))); // From pufferfish
         drugs.putIfAbsent("ethanol", new Drug("Ethanol", 0x000000, "blur", TimeConst.TICKS_PER_MINUTE * 2, 4, new Drug.dummyPot(Potion.hunger.getId(), TimeConst.TICKS_PER_MINUTE, 2), new Drug.dummyPot(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2))); // internal
         drugs.putIfAbsent("musc", new Drug("Muscimol", 0x30FF30, "sobel", TimeConst.TICKS_PER_MINUTE * 2, 2, new Drug.dummyPot(Potion.damageBoost.getId(), TimeConst.TICKS_PER_MINUTE, 1), new Drug.dummyPot(Potion.moveSlowdown.getId(), TimeConst.TICKS_PER_MINUTE * 2, 2))); // From red mushroom
+        drugs.putIfAbsent("solan", new Drug("Solanine", 0x825535, "blobs", TimeConst.TICKS_PER_MINUTE * 1, 4, new Drug.dummyPot(Potion.poison.getId(), TimeConst.TICKS_PER_MINUTE, 4)));
 
-        customRecipes.putIfAbsent("minecraft:potato:0", "ttx");
+        customRecipes.putIfAbsent("minecraft:potato:55", "ttx");
     }
 
     public static void init() {
