@@ -15,13 +15,17 @@ public class Drug {
 
     }
 
-    public Drug (String name, int RGB, String shader, int shaderTime, int dmg, PotionEffect... pots) {
+    public Drug (String name, int RGB, String shader, int shaderTime, int dmg, dummyPot... pots) {
         this.name = name;
         this.RGB = RGB;
         if (!shader.isEmpty())
             this.fx = shader;
         this.shaderTimer = shaderTime;
-        this.pots = pots;
+        this.pots = new PotionEffect[pots.length];
+        for (int i = 0; i < pots.length; i++) {
+            this.pots[i] = pots[i].getPot();
+        }
+
     }
 
     public void activateDrug(EntityPlayerMP player) {
@@ -61,5 +65,31 @@ public class Drug {
 
     public String getName() {
         return name;
+    }
+
+    public static class dummyPot {
+        int id, length, amplifier;
+        boolean ambient;
+        public dummyPot () {
+
+        }
+
+        public dummyPot (int id, int len, int amp) {
+            this.id = id;
+            this.length = len;
+            this.amplifier = amp;
+            this.ambient = false;
+        }
+
+        public dummyPot (int id, int len, int amp, boolean amb) {
+            this.id = id;
+            this.length = len;
+            this.amplifier = amp;
+            this.ambient = amb;
+        }
+
+        public PotionEffect getPot () {
+            return new PotionEffect(id, length, amplifier, ambient);
+        }
     }
 }

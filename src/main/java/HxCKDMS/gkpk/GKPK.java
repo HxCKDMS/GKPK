@@ -1,6 +1,8 @@
 package HxCKDMS.gkpk;
 
 import HxCKDMS.gkpk.client.GuiHandler;
+import HxCKDMS.gkpk.data.Configs;
+import HxCKDMS.gkpk.data.Drug;
 import HxCKDMS.gkpk.data.Registry;
 import HxCKDMS.gkpk.network.PacketShader;
 import HxCKDMS.gkpk.proxy.IProxy;
@@ -12,6 +14,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
+import hxckdms.hxcconfig.HxCConfig;
+import hxckdms.hxcconfig.handlers.SpecialHandlers;
+import hxckdms.hxccore.libraries.GlobalVariables;
 import net.minecraft.entity.player.EntityPlayerMP;
 
 import java.util.HashMap;
@@ -34,8 +39,14 @@ public class GKPK {
 
     public static HashMap<EntityPlayerMP, Integer> playersWithShaders = new HashMap<>();
 
+    public static HxCConfig hxCConfig;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        SpecialHandlers.registerSpecialClass(Drug.class);
+        SpecialHandlers.registerSpecialClass(Drug.dummyPot.class);
+        hxCConfig = new HxCConfig(Configs.class, "GKPK", GlobalVariables.modConfigDir, "cfg", "GKPK");
+        hxCConfig.initConfiguration();
         registry.preInit();
         network.registerMessage(PacketShader.handler.class, PacketShader.class, 0, Side.CLIENT);
     }
