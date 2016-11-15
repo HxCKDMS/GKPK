@@ -7,9 +7,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 
 public class Drug {
-    private String name = "errorDefaultName", fx = "blur";
-    private int RGB = 0x000000, shaderTimer, damage = 0;
-    private PotionEffect[] pots = new PotionEffect[]{};
+    public String name = "errorDefaultName", fx = "blur";
+    public int RGB = 0x000000, shaderTimer, damage = 0;
+    public PotionEffect[] pots = new PotionEffect[]{};
 
     public Drug () {
 

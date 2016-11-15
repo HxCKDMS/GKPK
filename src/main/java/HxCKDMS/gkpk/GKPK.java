@@ -43,16 +43,16 @@ public class GKPK {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        SpecialHandlers.registerSpecialClass(Drug.class);
-        SpecialHandlers.registerSpecialClass(Drug.dummyPot.class);
-        hxCConfig = new HxCConfig(Configs.class, "GKPK", GlobalVariables.modConfigDir, "cfg", "GKPK");
-        hxCConfig.initConfiguration();
         registry.preInit();
         network.registerMessage(PacketShader.handler.class, PacketShader.class, 0, Side.CLIENT);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        SpecialHandlers.registerSpecialClass(Drug.class);
+        SpecialHandlers.registerSpecialClass(Drug.dummyPot.class);
+        hxCConfig = new HxCConfig(Configs.class, "GKPK", GlobalVariables.modConfigDir, "cfg", "GKPK");
+        hxCConfig.initConfiguration();
         registry.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
