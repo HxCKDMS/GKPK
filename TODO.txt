@@ -1,0 +1,5 @@
+Allow for more extractions that use more than just one of the item in question
+Fix shift-clicking or disable it totaly outright 
+Add vomiting and a varible in the drug class for it
+Make extractor need to be place above fire or other heat source for it to work?? (see x-reliquary soruce for this)
+
