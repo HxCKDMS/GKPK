@@ -22,9 +22,8 @@ public class Registry {
     public BlockFermenter fermenter = new BlockFermenter();
 
     public void preInit() {
-        // Default compound set
         MinecraftForge.EVENT_BUS.register(new GEventHandler());
-       // GameRegistry.addRecipe(new ItemStack(BlockExtractor), "opo", "pep", "opo", 'e', Items.ender_eye, 'o', Blocks.obsidian, 'p', Items.ender_pearl);
+       // GameRegistry.addRecipe(new ItemStack(blockextractor), "opo", "pep", "opo", 'e', Items.ender_eye, 'o', Blocks.obsidian, 'p', Items.ender_pearl);
     }
 
     public void init() {
@@ -43,6 +42,7 @@ public class Registry {
         GKPKRecipe.Extracting().registerExtractRecipe(Items.rotten_flesh, "nodu");
         GKPKRecipe.Extracting().registerExtractRecipe(ItemBlock.getItemFromBlock(Blocks.red_mushroom), "musc");
         GKPKRecipe.Extracting().registerExtractRecipe(Items.fish, 3, "ttx");
+        GKPKRecipe.Extracting().registerExtractRecipe(Items.poisonous_potato, "solan");
 
         Configs.init();
 
