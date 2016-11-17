@@ -16,7 +16,7 @@ public class ItemEthanol extends Item implements IFuelHandler {
         this.setCreativeTab(GordianCreativeTab.gordianCreativeTab);
         this.setUnlocalizedName("gEthanol");
         this.setTextureName("GKPK:ethanol");
-        this.setMaxStackSize(32);
+        this.setMaxStackSize(48);
     }
 
     @Override
