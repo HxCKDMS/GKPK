@@ -1,7 +1,7 @@
 UPDATE to 1.10!!!!!!!!
 Allow for more extractions that use more than just one of the item in question
 Fix shift-clicking or disable it outright 
-Add vomiting and a varible in the drug class for it
+Add vomiting and a varible in the drug class for it (copy from wiggle's mod) 
 Make extractor need to be place above fire or other heat source for it to work?? (see x-reliquary soruce for this)
 Finish default compound set and add intergrated support for biomes o plenty
 Make drugs actually render
